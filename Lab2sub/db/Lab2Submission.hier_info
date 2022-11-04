@@ -1,0 +1,12 @@
+|Lab2Submission
+in => in.IN1
+out << frequency_divider:nametag.outEnb
+CLOCK_50 => CLOCK_50.IN1
+
+
+|Lab2Submission|frequency_divider:nametag
+CLOCK_50 => ~NO_FANOUT~
+outEnb <= <GND>
+rst => ~NO_FANOUT~
+
+
