@@ -1,5 +1,5 @@
-module Lab2Submission(in,HEX0, HEX1, LED0,CLOCK_50,rst);
-	input in, CLOCK_50, rst;
+module Lab2Submission(HEX0, HEX1, LED0,CLOCK_50,rst);
+	input CLOCK_50, rst;
 	output [7:0]HEX0, HEX1;
 	output LED0;
 	wire [3:0]w1, w2;
@@ -18,5 +18,6 @@ module Lab2Submission(in,HEX0, HEX1, LED0,CLOCK_50,rst);
 	hex_decoder hxd0 (.boom(w3), .in(w5), .out(HEX0)); // writes the ones digit to hex0.
 	
 	hex_decoder hxd1 (.boom(w3), .in(w6), .out(HEX1)); // writes the tens digit to hex1.
+	assign LED0 = w3;
 	
 endmodule
