@@ -1,0 +1,353 @@
+Analysis & Synthesis report for Lab2Submission
+Sat Nov 05 17:31:02 2022
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Parameter Settings for User Entity Instance: frequency_divider:fd
+ 10. Port Connectivity Checks: "boom_comprator:bc"
+ 11. Port Connectivity Checks: "counter:ct"
+ 12. Port Connectivity Checks: "frequency_divider:fd"
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat Nov 05 17:31:02 2022       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; Lab2Submission                              ;
+; Top-level Entity Name           ; Lab2Submission                              ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 4                                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; Lab2Submission     ; Lab2Submission     ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                            ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                              ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
+; Lab2Submission.v                 ; yes             ; User Verilog HDL File  ; H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v    ;         ;
+; frequency_divider.v              ; yes             ; User Verilog HDL File  ; H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/frequency_divider.v ;         ;
+; counter.v                        ; yes             ; User Verilog HDL File  ; H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/counter.v           ;         ;
+; boom_comprator.v                 ; yes             ; User Verilog HDL File  ; H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/boom_comprator.v    ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimate of Logic utilization (ALMs needed) ; 0     ;
+;                                             ;       ;
+; Combinational ALUT usage for logic          ; 0     ;
+;     -- 7 input functions                    ; 0     ;
+;     -- 6 input functions                    ; 0     ;
+;     -- 5 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 0     ;
+;     -- <=3 input functions                  ; 0     ;
+;                                             ;       ;
+; Dedicated logic registers                   ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 4     ;
+;                                             ;       ;
+; Total DSP Blocks                            ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; in    ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 4     ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                       ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+----------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name    ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+----------------+--------------+
+; |Lab2Submission            ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 4    ; 0            ; |Lab2Submission     ; Lab2Submission ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: frequency_divider:fd ;
++----------------+----------+---------------------------------------+
+; Parameter Name ; Value    ; Type                                  ;
++----------------+----------+---------------------------------------+
+; N              ; 50000000 ; Signed Integer                        ;
++----------------+----------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "boom_comprator:bc"                                                                      ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; outdecod ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; outled   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "counter:ct"                                                                                                                                                                       ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                                                          ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; enable ; Input ; Warning  ; Input port expression (5 bits) is wider than the input port (1 bits) it drives.  The 4 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "frequency_divider:fd"                                                                                                                                                   ;
++--------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                                                                               ;
++--------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; outEnb ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (5 bits) it drives.  The 4 most-significant bit(s) in the port expression will be connected to GND. ;
++--------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+; boundary_port         ; 4                           ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Sat Nov 05 17:30:51 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab2Submission -c Lab2Submission
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file lab2submission.v
+    Info (12023): Found entity 1: Lab2Submission File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file frequency_divider.v
+    Info (12023): Found entity 1: frequency_divider File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/frequency_divider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file counter.v
+    Info (12023): Found entity 1: counter File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/counter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file boom_comprator.v
+    Info (12023): Found entity 1: boom_comprator File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/boom_comprator.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux2to1.v
+    Info (12023): Found entity 1: mux2to1 File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/mux2to1.v Line: 1
+Info (12127): Elaborating entity "Lab2Submission" for the top level hierarchy
+Warning (10034): Output port "out" at Lab2Submission.v(3) has no driver File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 3
+Info (12128): Elaborating entity "frequency_divider" for hierarchy "frequency_divider:fd" File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 6
+Warning (10230): Verilog HDL assignment warning at frequency_divider.v(10): truncated value with size 32 to match size of target (26) File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/frequency_divider.v Line: 10
+Warning (10230): Verilog HDL assignment warning at frequency_divider.v(18): truncated value with size 32 to match size of target (1) File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/frequency_divider.v Line: 18
+Info (12128): Elaborating entity "counter" for hierarchy "counter:ct" File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 7
+Warning (10230): Verilog HDL assignment warning at counter.v(10): truncated value with size 32 to match size of target (5) File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/counter.v Line: 10
+Info (12128): Elaborating entity "boom_comprator" for hierarchy "boom_comprator:bc" File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 8
+Warning (10036): Verilog HDL or VHDL warning at boom_comprator.v(7): object "selwire" assigned a value but never read File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/boom_comprator.v Line: 7
+Warning (10230): Verilog HDL assignment warning at boom_comprator.v(10): truncated value with size 32 to match size of target (1) File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/boom_comprator.v Line: 10
+Warning (10230): Verilog HDL assignment warning at boom_comprator.v(13): truncated value with size 32 to match size of target (1) File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/boom_comprator.v Line: 13
+Warning (10230): Verilog HDL assignment warning at boom_comprator.v(14): truncated value with size 32 to match size of target (1) File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/boom_comprator.v Line: 14
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "w1[4]" is missing source, defaulting to GND File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 4
+    Warning (12110): Net "w1[3]" is missing source, defaulting to GND File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 4
+    Warning (12110): Net "w1[2]" is missing source, defaulting to GND File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 4
+    Warning (12110): Net "w1[1]" is missing source, defaulting to GND File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 4
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "out" is stuck at GND File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 3
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "in" File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 2
+    Warning (15610): No output dependent on input pin "CLOCK_50" File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 2
+    Warning (15610): No output dependent on input pin "rst" File: H:/Workspace/1-quatrus/LabSub/EmbeddedSystems/Lab2sub/Lab2Submission.v Line: 2
+Info (21057): Implemented 4 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 1 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 4796 megabytes
+    Info: Processing ended: Sat Nov 05 17:31:02 2022
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:19
+
+

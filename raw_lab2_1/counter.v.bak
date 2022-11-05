@@ -1,0 +1,19 @@
+module counter(CLOCK_50, enable, rst, out)
+input CLOCK_50, enable, rst;
+output [3:0]out;
+always @ (posedge CLOCK_50)
+begin
+if (rst)
+begin
+	out <= 4'b0;
+else
+	if(enable)
+	begin
+		out <= out + 1;
+	else
+		out <= out;
+	end
+end
+endmodule
+
+		
