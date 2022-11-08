@@ -1,6 +1,6 @@
 module frequency_divider(CLOCK_50, outEnb, rst);
 
-    parameter N = 50_000_000;
+    parameter N = 50;
     input CLOCK_50, rst;
     output outEnb;
     

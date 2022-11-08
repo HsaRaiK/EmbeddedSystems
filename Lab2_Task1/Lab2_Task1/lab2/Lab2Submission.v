@@ -1,4 +1,4 @@
-module Lab2Submission(in,HEX0, HEX1, LED0,CLOCK_50,rst);
+module Lab2_Task1(in,HEX0, HEX1, LED0,CLOCK_50,rst);
 	input in, CLOCK_50, rst;
 	output [7:0]HEX0, HEX1;
 	output LED0;
