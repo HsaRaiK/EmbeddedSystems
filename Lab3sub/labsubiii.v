@@ -11,7 +11,6 @@ module labsubiii(rst, x, CLOCK_50, y);
 	wire [7:0] out_wire;
 	wire [7:0] input_res_checked;
 	reg [7:0]x_1, x_2, x_3;
-	//mux21 mux21_1 ((.D0(x)),(.D1(1'b0)),(.S(rst)),(.Y(input_res_checked)));
 	assign input_res_checked=(rst)?0:x;
 	
 	assign w0 = input_res_checked >> 2;
