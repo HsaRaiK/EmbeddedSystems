@@ -22,81 +22,103 @@ volatile int *KEY_ptr;     // virtual address for the KEY port
 volatile int *TIMER_ptr;    // virtual address for the TIMER port
 volatile int *HEX3_HEX0_ptr;
 volatile int *HEX5_HEX4_ptr;
-int time_in ;
+int time_in ;   // holds time in centiseconds.
 
 irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *regs)
 {
 
+    // if the interrupt ID is 72 (i.e. timer interrupt) enters and updates 7-seg
     if(irq == 72) {
-        *TIMER_ptr = 0b0;
+        *TIMER_ptr = 0b0; 
         *(TIMER_ptr + 1) = 0b101;
-        time_in++;
-        if (time_in >= 360000) time_in = 0;
+        time_in++; // increment timer value.
+        if (time_in >= 360000) time_in = 0; // if 60 minutes is reached, reset timer.
 
-        int time_mins = 0;
+        int time_mins = 0; // holds time in minutes.
 
-        int time_secc = time_in / 100;
+        // holds time in seconds.
+        int time_secc = time_in / 100; 
         time_secc = time_secc % 60;
 
+        // extracts minutes, if no minutes are left => 0
         if(time_in / 6000 > 0)
             time_mins = time_in / 6000;
-        int time_mins_ones = time_mins % 10;
-        int time_mins_tens = time_mins / 10;
+
+
+        int time_mins_ones = time_mins % 10; // ones digit of mins
+        int time_mins_tens = time_mins / 10; // tens digit of mins
+        // print on 7-seg 4,5
         *HEX5_HEX4_ptr = seg7[time_mins_ones];
         *HEX5_HEX4_ptr += seg7[time_mins_tens] << 8;
 
 
-        int time_sec_ones = time_secc % 10;
-        int time_sec_tens = time_secc / 10;
+        int time_sec_ones = time_secc % 10; // ones digit of seconds
+        int time_sec_tens = time_secc / 10; // tens digit of seconds
+        // print on 7-seg 3,2
         *HEX3_HEX0_ptr = seg7[time_sec_ones];
         *HEX3_HEX0_ptr += seg7[time_sec_tens] << 8;
         *HEX3_HEX0_ptr = *HEX3_HEX0_ptr << 16;
 
+
         *(TIMER_ptr +5 ) = 0b0;
-        int time_low = time_in % 100;
-        int time_low_ones = time_low % 10;
-        int time_low_tens = time_low / 10;
-        *HEX3_HEX0_ptr += seg7[time_low_ones];
+
+        int time_low = time_in % 100; // centisecond extraction
+        int time_low_ones = time_low % 10; // ones digit of centiseconds
+        int time_low_tens = time_low / 10; // tens digit of centiseconds
+        // print on 7-seg 1, 0
+        *HEX3_HEX0_ptr += seg7[time_low_ones]; 
         *HEX3_HEX0_ptr += seg7[time_low_tens] << 8;
-        *(KEY_ptr + 3) = 0xF;
+
+        *(KEY_ptr + 3) = 0xF; // clear edgecaptures
 
 
     }
 
+    // interrupt is not from timer, (i.e. pushbutton interrupt)
     else {
-
+        // checks for edgecapture
         switch(*(KEY_ptr + 3)){
-
+            // stops if first key is pressed.
             case 0b0001:
-                if (*(TIMER_ptr + 1) % 2 == 1) *(TIMER_ptr + 1) = 0b1000;
-                else *(TIMER_ptr + 1) = 0b0101;
+                if (*(TIMER_ptr + 1) % 2 == 1) *(TIMER_ptr + 1) = 0b1000; // stop timer if interrupt is enabled
+                else *(TIMER_ptr + 1) = 0b0101; // if interrupt is not enabled, continues the timer.
 
-                int time_mins = 0;
+                int time_mins = 0; // holds time in minutes.
 
+                // holds time in seconds.
                 int time_secc = time_in / 100;
                 time_secc = time_secc % 60;
 
-                if(time_in / 6000 > 0)
+                // extracts minutes, if no minutes are left => 0
+                if (time_in / 6000 > 0)
                     time_mins = time_in / 6000;
-                int time_mins_ones = time_mins % 10;
-                int time_mins_tens = time_mins / 10;
+
+
+                int time_mins_ones = time_mins % 10; // ones digit of mins
+                int time_mins_tens = time_mins / 10; // tens digit of mins
+                // print on 7-seg 4,5
                 *HEX5_HEX4_ptr = seg7[time_mins_ones];
                 *HEX5_HEX4_ptr += seg7[time_mins_tens] << 8;
 
 
-                int time_sec_ones = time_secc % 10;
-                int time_sec_tens = time_secc / 10;
+                int time_sec_ones = time_secc % 10; // ones digit of seconds
+                int time_sec_tens = time_secc / 10; // tens digit of seconds
+                // print on 7-seg 3,2
                 *HEX3_HEX0_ptr = seg7[time_sec_ones];
                 *HEX3_HEX0_ptr += seg7[time_sec_tens] << 8;
                 *HEX3_HEX0_ptr = *HEX3_HEX0_ptr << 16;
 
-                *(TIMER_ptr +5 ) = 0b0;
-                int time_low = time_in % 100;
-                int time_low_ones = time_low % 10;
-                int time_low_tens = time_low / 10;
+
+                *(TIMER_ptr + 5) = 0b0;
+
+                int time_low = time_in % 100; // centisecond extraction
+                int time_low_ones = time_low % 10; // ones digit of centiseconds
+                int time_low_tens = time_low / 10; // tens digit of centiseconds
+                // print on 7-seg 1, 0
                 *HEX3_HEX0_ptr += seg7[time_low_ones];
                 *HEX3_HEX0_ptr += seg7[time_low_tens] << 8;
-                *(KEY_ptr + 3) = 0xF;
+
+                *(KEY_ptr + 3) = 0xF; // clear edgecaptures
 
                 break;
 

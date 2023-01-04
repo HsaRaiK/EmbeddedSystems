@@ -13,18 +13,22 @@ void * map_physical (int, unsigned int, unsigned int);
 void close_physical (int);
 int unmap_physical (void *, unsigned int);
 
-int stop = 0;
+int stop = 0; // stop signal, 0 => continue, 1=> stop
 
+/*Captures ctrl+v input from terminal, this will continue the led increments*/
 void sigint_handler_2(int sig_num) {
 	signal(SIGINT, sigint_handler_2);
 	stop = 0;
 }
 
+/*Captures ctrl+v input from terminal, this will halt the led increments*/
 void sigint_handler(int sig_num){
 
 	printf("\nCaught %d\n", sig_num);
-	stop = 1;
-	signal(SIGINT, sigint_handler_2);
+	stop = 1; // stops the program
+	signal(SIGINT, sigint_handler_2); // next ctrl + v will continue the program.
+
+	// "halts" the program by polling
 	while (stop){
 	
 }
@@ -32,23 +36,25 @@ void sigint_handler(int sig_num){
 	fflush(stdout);
 
 }
-
+/*calculates a^b */
 int our_pow (int a, int b) {
 	int power = 1, i;
-	for(i = 1; i  <= b; i++){
+	for(i = 1; i  <= b; i++) {
 
-	power = power * a;
+		power = power * a;
 
-}return power;
+	}
+	return power;
 
 }
 
 /* This program increments the contents of the red LED parallel port */
 int main(void)
 {	
-   int[10] decoded =  {0b011111, 0b0000110, 0b1011011, 0b1001111, 0b1100110, 0b1111101,  0b0000111, 0b1111111, 0b110111};
+   int[10] decoded =  {0b011111, 0b0000110, 0b1011011, 0b1001111, 0b1100110, 0b1111101,  0b0000111, 0b1111111, 0b110111}; // decoded 7-segment display.
+
    for (int x=0; x<10; x++){
-	printf("%d",decoded[x]);
+		printf("%d",decoded[x]);
 	}
    volatile int * LEDR_ptr;   // virtual address pointer to red LEDs
 
@@ -65,27 +71,28 @@ int main(void)
    LEDR_ptr = (unsigned int *) (LW_virtual + LEDR_BASE);
     
    signal(SIGINT, sigint_handler);
+   // continuously polls & updates vals of leds
    while(stop == 0) {
-   // Add 1 to the I/O register
    *LEDR_ptr = 0;
-
-   //Continue addition?
-   for(int i = 0; i < 10; i++)
-	{
+		
+		// increments leds untill 10th led.
+		for(int i = 0; i < 10; i++) {
 	
 
-	*LEDR_ptr += our_pow(2, i);
-	sleep(1);
-	*LEDR_ptr = 0;
+			*LEDR_ptr += our_pow(2, i); // shift left by 1 
+			sleep(1); // sleeps 1 sec
+			*LEDR_ptr = 0; 
 
-	}
-for (int i = 9; i >= 0; i--){
+		}
+		// decrements leds untill first led.
+		for (int i = 9; i >= 0; i--) {
 
-	*LEDR_ptr += our_pow(2, i);
-	sleep(1);
-	*LEDR_ptr = 0;
+			*LEDR_ptr += our_pow(2, i);
+			sleep(1);
+			*LEDR_ptr = 0;
 
-}}
+		}
+   }
    unmap_physical (LW_virtual, LW_BRIDGE_SPAN);   // release the physical-memory mapping
    close_physical (fd);   // close /dev/mem
    return 0;
