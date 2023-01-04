@@ -9,7 +9,7 @@ int open_physical (int);
 void * map_physical (int, unsigned int, unsigned int);
 void close_physical (int);
 int unmap_physical (void *, unsigned int);
-// a decoded string, reads: Atatürk 1881 - 1938
+// a decoded string, reads: Atatï¿½rk 1881 - 1938
 char decoded[17] = {0b1110111, 0b1110000, 0b1110111, 0b1110000, 0b0011101, 0b1010000, 0b1110101, 0b0,0b00000110,0b01111111, 0b01111111 , 0b00000110, 0b1000000, 0b00000110, 0b01101111, 0b01001111, 0b01111111};
 
  /* This program increments the contents of the red LED parallel port */

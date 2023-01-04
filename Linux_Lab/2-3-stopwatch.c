@@ -145,25 +145,25 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *regs)
             break;
             // the following cases are only theoretical as pushing two pushbuttons at the same time is not always possible due to human error
         case 0b0011:
-            set_ms += *SW_ptr;
+            set_ms += *SW_ptr;  // Adds more centiseconds by pressing first and second button
             time_in = set_m + set_s + set_ms;
             *(KEY_ptr + 3) = 0xF;
             break;
 
         case 0b0101:
-            set_s += (*SW_ptr * 100);
+            set_s += (*SW_ptr * 100); // Adds more seconds by pressing second and second button
             time_in = set_m + set_s + set_ms;
             *(KEY_ptr + 3) = 0xF;
             break;
 
         case 0b1001:
-            set_m += (*SW_ptr * 6000);
+            set_m += (*SW_ptr * 6000); // Adds more minutes by pressing third and second button
             time_in = set_m + set_s + set_ms;
             *(KEY_ptr + 3) = 0xF;
             break;
 
         case 0b1111:
-            set_ms = 0;
+            set_ms = 0; // pressing all the buttons makes the timer be at 00:00:00 (total reset)
             set_s = 0;
             set_m = 0;
             time_in = set_m + set_s + set_ms;
