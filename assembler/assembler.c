@@ -3,6 +3,9 @@
 #include<regex.h>
 #include<string.h>
 
+void* replace_commas(char *str);
+char* decode_instruction(char *instr);
+
 const char *file_name; // name of the assembly file, provided through command line args.
 
 // this is an assembler file, will take input.txt in assembly format, and will generate an output.txt in machine code format.
@@ -35,7 +38,8 @@ int main(int argc, char const *argv[])
     while ((read = getline(&instr, &len, fp)) != -1) {
         //printf("Retrieved line of length %zu:\n", read);
         printf("%s", instr);
-
+        replace_commas(instr);
+        printf("\n%s\n", instr);
         int count = 0;
         char *token = strtok(instr, delimiter_commenbts); // removes comments from instruction.
 
@@ -45,20 +49,19 @@ int main(int argc, char const *argv[])
             instr_list[count] = (char *)token;
             printf("Token no: %d, str: %s\n", count, token);
             token = strtok(NULL, delimiter);
-            
             count++;
         }
         instr_list[count] = NULL;
 
-        
-    }
-    size_t i = 0;
-    printf("Commencing str test: \n");
-    while (instr_list[i] != NULL)
-    {
-        
-        printf("%ld: %s\n", i+1, instr_list[i]);
-        i++;
+        // debug, will remove later.
+        size_t i = 0;
+        printf("Commencing str test: \n");
+        while (instr_list[i] != NULL)
+        {
+            
+            printf("%ld: %s\n", i+1, instr_list[i]);
+            i++;
+        }
     }
     
 
@@ -69,4 +72,24 @@ int main(int argc, char const *argv[])
         free(instr);
 
     return 0;
+}
+
+char* decode_instruction(char* instr) {
+    
+    char format;
+    
+    char *op, *rs, *rt, *rd, *address_imm;
+
+    return "not completed";
+
+}
+
+// removes all commas in a string.
+void* replace_commas(char *str) {
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
+        if (strchr(",", str[i])) {
+            str[i] = ' ';
+        }
+    }
 }
