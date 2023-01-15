@@ -1,2 +1,4 @@
-STR R1, R5, R6 // this is a sample comment. please disregard this.
-ADD R1, R2, #124 // Holy father, holy ghost// Who's the one who pays the most// Rock the cradle, don't you cry Buy another lullaby
+SW R1, #7, R2
+LW R1, #7, R2
+J #200
+SUB R3, R5, R7 // Holy father, holy ghost// Who's the one who pays the most// Rock the cradle, don't you cry// Buy another lullaby
