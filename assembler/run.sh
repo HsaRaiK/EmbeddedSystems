@@ -1,3 +1,3 @@
-gcc assembler.c -o assembler.out
+gcc assembler.c -o assembler_yerli_ve_milli.out
 
-./assembler.out input.txt
+./assembler_yerli_ve_milli.out input.txt
