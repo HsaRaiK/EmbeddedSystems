@@ -200,10 +200,10 @@ char* decode_instruction(char** instr_list)
     {
         
         // remove first words, be it R or #, depending on the instruction.
-        memmove(&instr_list[1][0], &instr_list[1][1], strlen(instr_list[1]) - 0);
+        memmove(&instr_list[1][0], &instr_list[1][1], strlen(instr_list[1]) - 0); // rd
         
-        memmove(&instr_list[2][0], &instr_list[2][1], strlen(instr_list[2]) - 0);
-        memmove(&instr_list[3][0], &instr_list[3][1], strlen(instr_list[3]) - 0);        
+        memmove(&instr_list[2][0], &instr_list[2][1], strlen(instr_list[2]) - 0); // rs
+        memmove(&instr_list[3][0], &instr_list[3][1], strlen(instr_list[3]) - 0);  // rt
         
         strcat(instruction, instr_machine.op);
         
