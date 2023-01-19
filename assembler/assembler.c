@@ -156,9 +156,9 @@ char* decode_instruction(char** instr_list)
         instr_machine.op = "000";
         instr_machine.func = "1000";
     }
-    else if (strcmp(instr_list[0], "sli") == 0)
+    else if (strcmp(instr_list[0], "slti") == 0)
     {
-        instr_machine.format = 'R';
+        instr_machine.format = 'I';
         instr_machine.op = "001";
         
     }
@@ -223,17 +223,17 @@ char* decode_instruction(char** instr_list)
     {
         
         // remove first words, be it R or #, depending on the instruction.
-        memmove(&instr_list[1][0], &instr_list[1][1], strlen(instr_list[1]) - 0); // rs
-        memmove(&instr_list[2][0], &instr_list[2][1], strlen(instr_list[2]) - 0); // rt
-        memmove(&instr_list[3][0], &instr_list[3][1], strlen(instr_list[3]) - 0); // imm  
+        memmove(&instr_list[1][0], &instr_list[1][1], strlen(instr_list[1]) - 0); // rt
+        memmove(&instr_list[2][0], &instr_list[2][1], strlen(instr_list[2]) - 0); // imm
+        memmove(&instr_list[3][0], &instr_list[3][1], strlen(instr_list[3]) - 0); // rs  
         
         strcat(instruction, instr_machine.op);
 
-        instr_machine.rs = int_to_binary(atoi(instr_list[1]), 3);
+        instr_machine.rs = int_to_binary(atoi(instr_list[3]), 3);
         strcat(instruction, instr_machine.rs);
-        instr_machine.rt = int_to_binary(atoi(instr_list[2]), 3);
+        instr_machine.rt = int_to_binary(atoi(instr_list[1]), 3);
         strcat(instruction, instr_machine.rt);
-        instr_machine.address_imm = int_to_binary(atoi(instr_list[3]), 7);
+        instr_machine.address_imm = int_to_binary(atoi(instr_list[2]), 7);
         strcat(instruction, instr_machine.address_imm);
         
         printf("INSTRUCTION: %s\n",instruction);
